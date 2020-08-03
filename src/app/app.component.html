@@ -1,0 +1,23 @@
+<main>
+  <div class="search-block">
+    <input type="text" [(ngModel)]="searchModel" (input)="getUsers()">
+    <button 
+      (click)="searchUsers(searchModel)"
+      (keyup.enter)="searchUsers(searchModel)"
+    >Search</button>
+
+    <p *ngIf="isInput">값이 비었음</p>
+
+    <ul class="drop-list" *ngIf="isDropShow">
+      <li 
+        *ngFor="let user of users"
+        (click)="selectUser(user)"        
+      >
+        {{user.login}}
+      </li>
+    </ul>
+    <!-- <button (click)="getUsers()">get Users</button> -->
+  </div>
+  
+  <app-users [selectedUsers]="selectedUsers"></app-users>
+</main>
